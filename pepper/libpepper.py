@@ -176,6 +176,29 @@ class Pepper(object):
 
         return self.low([low], path='/')
 
+    def runner(self, fun, arg=None, kwarg=None, timeout=None):
+        '''
+        Execute a runner using the ``runner`` client
+
+        Wraps :meth:`low`.
+        '''
+        low = {
+            'client': 'runner',
+            'fun': fun,
+        }
+
+        if arg:
+            low['arg'] = arg
+
+        if kwarg:
+            low['kwarg'] = kwarg
+
+        if timeout:
+            low['timeout'] = timeout
+
+        return self.low([low], path='/')
+
+
     def lookup_jid(self, jid):
         '''
         Get job results
