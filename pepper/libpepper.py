@@ -176,7 +176,7 @@ class Pepper(object):
 
         return self.low([low], path='/')
 
-    def runner(self, fun, arg=None, kwarg=None, timeout=None):
+    def runner(self, fun, kwarg=None, timeout=None):
         '''
         Execute a runner using the ``runner`` client
 
@@ -186,12 +186,6 @@ class Pepper(object):
             'client': 'runner',
             'fun': fun,
         }
-
-        if arg:
-            low['arg'] = arg
-
-        if kwarg:
-            low['kwarg'] = kwarg
 
         if timeout:
             low['timeout'] = timeout
